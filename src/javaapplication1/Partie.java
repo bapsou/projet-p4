@@ -22,7 +22,19 @@ public class Partie {
         ListeJoueurs[1].affecterCouleur("rouge");
     }
     public void initialiserPartie() {
-        
+        Grille gdj = new Grille() ;
+        int nbt = 0 ; 
+        int nbd = 0 ;
+        while (nbt < 6 ) {
+            int i = (int) Math.random() * ( 6 - 1 ) ;
+            int j = ( int ) Math.random() * ( 7 - 1 ) ;
+            gdj.placerTrouNoir (i , j ) ; 
+        }
+        while (nbd < 6 ) {
+            int i = (int) Math.random() * ( 6 - 1 ) ;
+            int j = ( int ) Math.random() * ( 7 - 1 ) ;
+            gdj.placerDesintegrateur (i , j ) ; 
+        }
     }
     
     public void debuterPartie() {
