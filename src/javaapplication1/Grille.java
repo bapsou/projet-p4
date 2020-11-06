@@ -12,6 +12,14 @@ package javaapplication1;
 public class Grille {
     Cellule[][] Cellules = new Cellule[6][7];
     
+Grille () {
+    for (int i = 0; i< 6 ; i++ ){
+        for ( int j = 0 ; j < 7 ; j ++){
+            Cellules [i][j] = new Cellule() ;
+        }
+    }
+}    
+    
     public boolean ajouterJetonDansColonne(Jeton abc , int ijk){
         if ( Cellules[0][ijk].jetonCourant != null){
             return false ;
@@ -68,16 +76,30 @@ public class Grille {
         for ( int i = 0 ; i <= 5 ; i++ ){
             for ( int j = 0 ; j <= 6 ; j++ ){ 
                 Cellules[i][j].jetonCourant = null ;
+                Cellules[i][j].desintegrateur =false;
+                Cellules[i][j].trouNoir = false; 
             }    
         }
     }
     public void afficherGrilleSurConsole() {
     for ( int i = 0 ; i <= 5 ; i++ ){
-        for ( int j = 0 ; j <= 6 ; j++ ){ 
-            System.out.println(Cellules[i][j].jetonCourant ) ;            
-        }        
+        for ( int j = 0 ; j <= 6 ; j++ ){
+            if (Cellules[i][j].presenceTrouNoir() == true ){
+                System.out.println("#") ;            
+            } 
+            if ("rouge".equals(Cellules[i][j].lireCouleurDuJeton())){
+                System.out.print("R");
+            }
+            if ("jaune".equals(Cellules[i][j].lireCouleurDuJeton())){
+                System.out.print("J");
+            } 
+            else{
+                System.out.print(" ");
+            }
+        }
+        }
     }
-    }
+    
     public boolean celluleOccupee ( int x, int y) {
     if (Cellules[x][y] == null){
         return false ;    
