@@ -114,18 +114,33 @@ Grille () {
     public boolean etreGagnantePourJoueur ( Joueur az ) {
         boolean a = false ;
         for ( int i = 0 ; i <= 5 ; i++ ){
-            for ( int j = 0 ; j <= 6 ; j++ ){ 
-                if (lireCouleurDuJeton (i, j).equals(az.Couleur)&& lireCouleurDuJeton(i+1, j).equals(az.Couleur) && lireCouleurDuJeton(i+2, j).equals(az.Couleur) && lireCouleurDuJeton(i+3, j).equals(az.Couleur)){
-                    a= true ;
-                }        
+            for ( int j = 0 ; j <= 2 ; j++ ){    
                 if (lireCouleurDuJeton (i, j).equals(az.Couleur)&& lireCouleurDuJeton(i, j+1).equals(az.Couleur) && lireCouleurDuJeton(i, j+2).equals(az.Couleur) && lireCouleurDuJeton(i, j+3).equals(az.Couleur)){
                     a= true ;
                 }        
-                if (lireCouleurDuJeton (i, j).equals(az.Couleur)&& lireCouleurDuJeton(i+1, j+1).equals(az.Couleur) && lireCouleurDuJeton(i+2, j+2).equals(az.Couleur) && lireCouleurDuJeton(i+3, j+3).equals(az.Couleur)){
-                    a= true ;  
-                }     
             }    
         }
+        for ( int i = 0 ; i <= 2 ; i++ ){
+            for ( int j = 0 ; j <= 6 ; j++ ){ 
+                if (lireCouleurDuJeton (i, j).equals(az.Couleur)&& lireCouleurDuJeton(i+1, j).equals(az.Couleur) && lireCouleurDuJeton(i+2, j).equals(az.Couleur) && lireCouleurDuJeton(i+3, j).equals(az.Couleur)){
+                    a= true ;
+                }    
+            }
+        }
+         for ( int i = 0 ; i <= 3 ; i++ ){
+            for ( int j = 0 ; j <= 2 ; j++ ){ 
+                if (lireCouleurDuJeton (i, j).equals(az.Couleur)&& lireCouleurDuJeton(i+1, j+1).equals(az.Couleur) && lireCouleurDuJeton(i+2, j+2).equals(az.Couleur) && lireCouleurDuJeton(i+3, j+3).equals(az.Couleur)){
+                    a= true ;
+                }    
+            }
+        }
+        for ( int i = 0 ; i <= 3 ; i++ ){
+            for ( int j = 3 ; j <= 5 ; j++ ){ 
+                if (lireCouleurDuJeton (i, j).equals(az.Couleur)&& lireCouleurDuJeton(i-1, j+1).equals(az.Couleur) && lireCouleurDuJeton(i-2, j+2).equals(az.Couleur) && lireCouleurDuJeton(i-3, j+3).equals(az.Couleur)){
+                    a= true ;
+                }    
+            }
+        }         
         return a;
     }
     public void tasserGrille ( int ui , int j) {
