@@ -68,6 +68,7 @@ public class Partie {
         System.out.println("Que Voulez vous faire ? \n1 : jouer un jeton \n2 : utiliser un désintegrateur\n3 : Recuperer un jeton  " );
             select = sc.nextInt() ;
             while ( select >= 4 || select < 1 ){
+                
                 System.out.println("choix pas valide");
                 select = sc.nextInt() ;
             }
@@ -103,7 +104,7 @@ public class Partie {
                 System.out.println("dans quelle colonne voulez vous récuperer ?");
                 Scanner scc = new Scanner ( System.in) ;
                 coll = scc.nextInt() ; 
-                System.out.println("dans quelle colonne voulez vous récuperer ?");
+                System.out.println("dans quelle ligne voulez vous récuperer ?");
                 Scanner sccc = new Scanner ( System.in) ;
                 ligne = sccc.nextInt() ;
                 if ( gdj.Cellules[ligne][coll] != null ){

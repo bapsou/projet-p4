@@ -65,7 +65,11 @@ public class Cellule {
         return desintegrateur ;
     } 
     public String lireCouleurDuJeton() {
+        if (jetonCourant == null ){
+            return " pas de couleur " ;
+        }
         return jetonCourant.Couleur ;
+        
     }
     public boolean recupererDesintegrateur(){
         if (desintegrateur != false ) {

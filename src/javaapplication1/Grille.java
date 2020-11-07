@@ -109,7 +109,7 @@ Grille () {
     }
     }
     public String lireCouleurDuJeton ( int x, int y) {
-        if (Cellules [x][y] == null ){
+        if (Cellules[x][y].jetonCourant == null ){
             return " cellule vide " ;
         } 
         else {
