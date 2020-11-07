@@ -109,8 +109,14 @@ Grille () {
     }
     }
     public String lireCouleurDuJeton ( int x, int y) {
-        return Cellules[x][y].jetonCourant.Couleur ;
+        if (Cellules [x][y] == null ){
+            return " cellule vide " ;
+        } 
+        else {
+            return Cellules[x][y].jetonCourant.Couleur ;
+        }
     }
+    
     public boolean etreGagnantePourJoueur ( Joueur az ) {
         boolean a = false ;
         for ( int i = 0 ; i <= 5 ; i++ ){
