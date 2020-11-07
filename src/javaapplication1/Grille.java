@@ -76,7 +76,7 @@ Grille () {
         for ( int i = 0 ; i <= 5 ; i++ ){
             for ( int j = 0 ; j <= 6 ; j++ ){ 
                 Cellules[i][j].jetonCourant = null ;
-                Cellules[i][j].desintegrateur =false;
+                Cellules[i][j].desintegrateur = false;
                 Cellules[i][j].trouNoir = false; 
             }    
         }
@@ -92,7 +92,7 @@ Grille () {
             }
             if ("jaune".equals(Cellules[i][j].lireCouleurDuJeton())){
                 System.out.print("J");
-            } 
+            }
             else{
                 System.out.print(" ");
             }
