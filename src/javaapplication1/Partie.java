@@ -31,12 +31,12 @@ public class Partie {
         else {
             joueurCourant = ListeJoueurs[1] ;
         }
-                
+        attribuerCouleursAuxJoueurs();        
         int nbt = 0 ; 
         int nbd = 0 ;
         while (nbt < 6 ) {
             int i = (int) Math.random() * ( 6 - 1 ) ;
-            int j = ( int ) Math.random() * ( 7 - 1 ) ;
+            int j = (int) Math.random() * ( 7 - 1 ) ;
             gdj.placerTrouNoir (i , j ) ; 
             nbt ++ ;
         }
@@ -48,7 +48,7 @@ public class Partie {
         }
         for (int i = 0;  i <= 20 ; i++ ){
             ListeJoueurs[0].ajouterJeton(new Jeton(ListeJoueurs[0].Couleur));
-            ListeJoueurs[1].ajouterJeton(new Jeton(ListeJoueurs[1].Couleur));  
+            ListeJoueurs[1].ajouterJeton(new Jeton(ListeJoueurs[1].Couleur)); 
         }
     }
     
@@ -76,8 +76,8 @@ public class Partie {
                 System.out.println("dans quelle colonne voulez vous ajouter");
                 Scanner scc = new Scanner ( System.in) ;
                 coll = scc.nextInt() ;               
-                gdj.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestant-1],coll);
-                joueurCourant.nombreJetonsRestant-=1 ;
+                gdj.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestant],coll);
+                joueurCourant.nombreJetonsRestant= joueurCourant.nombreJetonsRestant -1 ;
             }
             if (select == 2 && joueurCourant.nombreDesintegrateurs != 0 ) {
                 System.out.println("dans quelle colonne voulez vous désintégrer ?");

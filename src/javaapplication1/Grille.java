@@ -25,32 +25,32 @@ Grille () {
             return false ;
         }
         else {
-            if ( Cellules[5][ijk].jetonCourant == null){
-                Cellules[5][ijk].jetonCourant = abc  ;
+            if ( Cellules[5][ijk-1].jetonCourant == null){
+                Cellules[5][ijk-1].jetonCourant = abc  ;
                 return true ;
             }
             else {
-                if ( Cellules[4][ijk].jetonCourant == null){
-                    Cellules[4][ijk].jetonCourant = abc  ;
+                if ( Cellules[4][ijk-1].jetonCourant == null){
+                    Cellules[4][ijk-1].jetonCourant = abc  ;
                     return true ;
                 }
                 else {
-                    if ( Cellules[3][ijk].jetonCourant == null){
-                        Cellules[3][ijk].jetonCourant = abc  ;
+                    if ( Cellules[3][ijk-1].jetonCourant == null){
+                        Cellules[3][ijk-1].jetonCourant = abc  ;
                         return true ;
                     }
                     else {
-                        if ( Cellules[2][ijk].jetonCourant == null){
-                            Cellules[2][ijk].jetonCourant = abc  ;
+                        if ( Cellules[2][ijk-1].jetonCourant == null){
+                            Cellules[2][ijk-1].jetonCourant = abc  ;
                             return true ;
                         }
                         else {
-                            if ( Cellules[1][ijk].jetonCourant == null){
-                            Cellules[1][ijk].jetonCourant = abc  ;
+                            if ( Cellules[1][ijk-1].jetonCourant == null){
+                            Cellules[1][ijk-1].jetonCourant = abc  ;
                             return true ;
                             }
                             else {
-                                Cellules[0][ijk].jetonCourant = abc  ;
+                                Cellules[0][ijk-1].jetonCourant = abc  ;
                                 return true ;
                                     
                                    
@@ -85,21 +85,28 @@ Grille () {
     for ( int i = 0 ; i <= 5 ; i++ ){
         for ( int j = 0 ; j <= 6 ; j++ ){
             if (Cellules[i][j].presenceTrouNoir() == true ){
-                System.out.println("#") ;            
+                System.out.print("#") ;  
             } 
-            if ("rouge".equals(Cellules[i][j].lireCouleurDuJeton())){
-                System.out.print("R");
+            else if (Cellules[i][j].presenceDesintegrateur() == true ){
+                System.out.print("D") ;
             }
-            if ("jaune".equals(Cellules[i][j].lireCouleurDuJeton())){
-                System.out.print("J");
+            else if (Cellules[i][j].jetonCourant == null ){
+                 System.out.print("N");
             }
-            else{
-                System.out.print(" ");
-            }
+            else if (Cellules[i][j].jetonCourant != null ){
+                if (Cellules[i][j].jetonCourant.Couleur == "rouge"){
+                    System.out.print("R");
+                }
+                if (Cellules[i][j].jetonCourant.Couleur== "jaune"){
+                    System.out.print("J");
+                }
+            }     
         }
+        System.out.println( " " +( i + 1));
+
         }
     }
-    
+   
     public boolean celluleOccupee ( int x, int y) {
     if (Cellules[x][y] == null){
         return false ;    
@@ -121,7 +128,7 @@ Grille () {
         boolean a = false ;
         for ( int i = 0 ; i <= 5 ; i++ ){
             for ( int j = 0 ; j <= 2 ; j++ ){    
-                if (lireCouleurDuJeton (i, j).equals(az.Couleur)&& lireCouleurDuJeton(i, j+1).equals(az.Couleur) && lireCouleurDuJeton(i, j+2).equals(az.Couleur) && lireCouleurDuJeton(i, j+3).equals(az.Couleur)){
+                if (lireCouleurDuJeton (i, j) == (az.Couleur)&& lireCouleurDuJeton(i, j+1) == (az.Couleur) && lireCouleurDuJeton(i, j+2) == (az.Couleur) && lireCouleurDuJeton(i, j+3) ==(az.Couleur)){
                     a= true ;
                 }        
             }    
