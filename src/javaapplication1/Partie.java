@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package javaapplication1;
+import java.util.Random;
 import java.util.Scanner ;
-import java.util.Random ; 
+
 /**
  *
  * @author bsoulie
@@ -24,6 +25,7 @@ public class Partie {
     
     public void initialiserPartie() {        
         gdj.viderGrille() ;
+        Random rand = new Random () ; 
         double nbaleatoire = Math.random() ;
         if (nbaleatoire > 0.5 ){
             joueurCourant = ListeJoueurs[0] ;
@@ -35,14 +37,14 @@ public class Partie {
         int nbt = 0 ; 
         int nbd = 0 ;
         while (nbt < 6 ) {
-            int i = (int) Math.random() * 6 ;
-            int j = (int) Math.random() * 7 ;
+            int i = rand.nextInt(6);
+            int j = rand.nextInt(7);
             gdj.placerTrouNoir (i , j ) ; 
             nbt ++ ;
         }
         while (nbd < 6 ) {
-            int i = (int) Math.random() * 6 ;
-            int j = (int) Math.random() * 7 ;
+            int i = rand.nextInt(6);
+            int j = rand.nextInt(7);
             gdj.placerDesintegrateur (i , j ) ;
             nbd ++ ;
         }
@@ -52,8 +54,7 @@ public class Partie {
             ListeJoueurs[1].ajouterJeton(new Jeton(ListeJoueurs[1].Couleur));
             ListeJoueurs[1].nombreJetonsRestant ++ ;
         }
-        ListeJoueurs[0].nombreDesintegrateurs = 3 ;
-        ListeJoueurs[1].nombreDesintegrateurs = 3 ;
+        
         
     }
     
