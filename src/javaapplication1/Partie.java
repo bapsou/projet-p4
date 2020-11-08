@@ -81,9 +81,10 @@ public class Partie {
             if (select == 1 ) {
                 System.out.println("dans quelle colonne voulez vous ajouter");
                 Scanner scc = new Scanner ( System.in) ;
-                coll = scc.nextInt() ;               
-                gdj.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestant-1],coll);
+                coll = scc.nextInt();               
+                gdj.ajouterJetonDansColonne(joueurCourant,coll);
                 joueurCourant.nombreJetonsRestant= joueurCourant.nombreJetonsRestant -1 ;
+                
             }
             if (select == 2 && joueurCourant.nombreDesintegrateurs != 0 ) {
                 System.out.println("dans quelle colonne voulez vous désintégrer ?");
@@ -109,14 +110,14 @@ public class Partie {
             if (select == 3 ) {
                 System.out.println("dans quelle colonne voulez vous récuperer ?");
                 Scanner scc = new Scanner ( System.in) ;
-                coll = scc.nextInt() ; 
+                coll = scc.nextInt() -1; 
                 System.out.println("dans quelle ligne voulez vous récuperer ?");
                 Scanner sccc = new Scanner ( System.in) ;
-                ligne = sccc.nextInt() ;
-                if ( gdj.Cellules[ligne][coll] != null ){
+                ligne = sccc.nextInt()-1 ;
+                if (gdj.Cellules[ligne][coll].jetonCourant != null ){
                     gdj.recupererJeton(ligne,coll) ;
                     gdj.tasserGrille(ligne,coll) ;}
-                else {
+                else{
                 System.out.println("Bravo petit malin vous voulez récuperer ... Quelque chose ....QUI N'EXISTE PAS ? AHAHAHAHA, non.\n Vous passez votre tout pour la peine ");   
                 }
             }
