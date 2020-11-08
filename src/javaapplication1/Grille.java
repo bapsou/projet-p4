@@ -93,7 +93,7 @@ Grille () {
             else if (Cellules[i][j].jetonCourant == null ){
                  System.out.print("N");
             }
-            else if (Cellules[i][j].jetonCourant != null ){
+            else if (Cellules[i][j].jetonCourant !=  null ){
                 if (Cellules[i][j].jetonCourant.Couleur == "rouge"){
                     System.out.print("R");
                 }
