@@ -35,14 +35,14 @@ public class Partie {
         int nbt = 0 ; 
         int nbd = 0 ;
         while (nbt < 6 ) {
-            int i = (int) Math.random() * ( 6 - 1 ) ;
-            int j = (int) Math.random() * ( 7 - 1 ) ;
+            int i = (int) Math.random() * 6 ;
+            int j = (int) Math.random() * 7 ;
             gdj.placerTrouNoir (i , j ) ; 
             nbt ++ ;
         }
         while (nbd < 6 ) {
-            int i = (int) Math.random() * ( 6 - 1 ) ;
-            int j = ( int ) Math.random() * ( 7 - 1 ) ;
+            int i = (int) Math.random() * 6 ;
+            int j = (int) Math.random() * 7 ;
             gdj.placerDesintegrateur (i , j ) ;
             nbd ++ ;
         }
@@ -52,9 +52,12 @@ public class Partie {
             ListeJoueurs[1].ajouterJeton(new Jeton(ListeJoueurs[1].Couleur));
             ListeJoueurs[1].nombreJetonsRestant ++ ;
         }
+        ListeJoueurs[0].nombreDesintegrateurs = 3 ;
+        ListeJoueurs[1].nombreDesintegrateurs = 3 ;
+        
     }
     
-    public void debuterPartie() {
+    public void debuterPartie()  { 
         
         int select ;
         int coll ; 
@@ -85,7 +88,7 @@ public class Partie {
                 System.out.println("dans quelle colonne voulez vous désintégrer ?");
                 Scanner scc = new Scanner ( System.in) ;
                 coll = scc.nextInt() ; 
-                System.out.println("dans quelle colonne voulez vous désintégrer ?");
+                System.out.println("dans quelle ligne voulez vous désintégrer ?");
                 Scanner sccc = new Scanner ( System.in) ;
                 ligne = sccc.nextInt() ;
                 if ( gdj.Cellules[ligne][coll] != null ){
@@ -116,11 +119,13 @@ public class Partie {
                 System.out.println("Bravo petit malin vous voulez récuperer ... Quelque chose ....QUI N'EXISTE PAS ? AHAHAHAHA, non.\n Vous passez votre tout pour la peine ");   
                 }
             }
-            if ( joueurCourant == ListeJoueurs[1] ){
+            if ( joueurCourant == ListeJoueurs[1] || joueurCourant == ListeJoueurs[0]){
+                if ( joueurCourant == ListeJoueurs[0] ){
+                    joueurCourant = ListeJoueurs[1] ;
+                }
+                else { 
                 joueurCourant = ListeJoueurs[0] ;
-            }
-            if ( joueurCourant == ListeJoueurs[0] ){
-                joueurCourant = ListeJoueurs[1] ;
+                }
             }
         }    
     }
