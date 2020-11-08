@@ -24,13 +24,12 @@ public class Joueur {
         Couleur = color ;
     }
     public boolean ajouterJeton (Jeton Jeton_a_mettre){
+        boolean a = false;
         ListeJetons[nombreJetonsRestant] = Jeton_a_mettre ;
         if (nombreJetonsRestant <= 21 ){
-            return true ;
+            a = true ;
         }
-        else {
-            return false ; 
-        }
+        return a;
     }
     public void obtenirDesintegrateur() {
         nombreDesintegrateurs++;        
