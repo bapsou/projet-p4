@@ -20,47 +20,61 @@ Grille () {
     }
 }    
     
-    public boolean ajouterJetonDansColonne(Jeton abc , int ijk){
-        if ( Cellules[0][ijk].jetonCourant != null){
-            return false ;
-        }
-        else {
-            if ( Cellules[5][ijk-1].jetonCourant == null){
-                Cellules[5][ijk-1].jetonCourant = abc  ;
-                return true ;
+    public boolean ajouterJetonDansColonne(Joueur JJJ , int ijk){
+            if ( Cellules[0][ijk].jetonCourant != null){
+                if (Cellules[0][ijk].presenceDesintegrateur() == true ){
+                    Cellules[0][ijk].recupererDesintegrateur() ;
+                    JJJ.nombreDesintegrateurs=+1 ;
+                    Cellules[0][ijk].affecterJeton(JJJ.ListeJetons[JJJ.nombreJetonsRestant-1]);
+                    return true ;
+                }
+                if (Cellules[0][ijk].presenceTrouNoir() == true ){
+                    Cellules[0][ijk].supprimerJeton() ;
+                    Cellules[0][ijk].affecterJeton(JJJ.ListeJetons[JJJ.nombreJetonsRestant-1]);
+                    return true ; 
+                }
+                else {
+                    return false ;                    
+                }
             }
             else {
-                if ( Cellules[4][ijk-1].jetonCourant == null){
-                    Cellules[4][ijk-1].jetonCourant = abc  ;
+                if ( Cellules[5][ijk-1].jetonCourant == null){
+                    Cellules[5][ijk-1].affecterJeton(JJJ.ListeJetons[JJJ.nombreJetonsRestant-1]) ;
                     return true ;
                 }
                 else {
-                    if ( Cellules[3][ijk-1].jetonCourant == null){
-                        Cellules[3][ijk-1].jetonCourant = abc  ;
+                    if ( Cellules[4][ijk-1].jetonCourant == null){
+                        Cellules[4][ijk-1].affecterJeton(JJJ.ListeJetons[JJJ.nombreJetonsRestant-1]);
                         return true ;
                     }
                     else {
-                        if ( Cellules[2][ijk-1].jetonCourant == null){
-                            Cellules[2][ijk-1].jetonCourant = abc  ;
+                        if ( Cellules[3][ijk-1].jetonCourant == null){
+                            Cellules[3][ijk-1].affecterJeton(JJJ.ListeJetons[JJJ.nombreJetonsRestant-1])  ;
                             return true ;
                         }
                         else {
-                            if ( Cellules[1][ijk-1].jetonCourant == null){
-                            Cellules[1][ijk-1].jetonCourant = abc  ;
-                            return true ;
+                            if ( Cellules[2][ijk-1].jetonCourant == null){
+                                Cellules[2][ijk-1].affecterJeton(JJJ.ListeJetons[JJJ.nombreJetonsRestant-1]);
+                                return true ;
                             }
                             else {
-                                Cellules[0][ijk-1].jetonCourant = abc  ;
+                                if ( Cellules[1][ijk-1].jetonCourant == null){
+                                Cellules[1][ijk-1].affecterJeton(JJJ.ListeJetons[JJJ.nombreJetonsRestant-1]) ;
                                 return true ;
-                                    
-                                   
+                                }
+                                else {
+                                    Cellules[0][ijk-1].affecterJeton(JJJ.ListeJetons[JJJ.nombreJetonsRestant-1])  ;
+                                    return true ; 
+                                }    
                             }
                         }
                     }                     
                 }       
             }
-        }
-    }
+    
+    } 
+        
+    
     public boolean etreRemplie() {
         int f = 0 ;
         for ( int i = 0 ; i <= 5 ; i++ ){
@@ -84,21 +98,32 @@ Grille () {
     public void afficherGrilleSurConsole() {
     for ( int i = 0 ; i <= 5 ; i++ ){
         for ( int j = 0 ; j <= 6 ; j++ ){
-            if (Cellules[i][j].presenceTrouNoir() == true ){
-                System.out.print("#") ;  
+            if (Cellules[i][j].presenceTrouNoir() == true && Cellules[i][j].jetonCourant ==  null){
+                System.out.print("(#)") ;  
             } 
-            else if (Cellules[i][j].presenceDesintegrateur() == true ){
-                System.out.print("D") ;
+            else if (Cellules[i][j].presenceTrouNoir() == true && Cellules[i][j].jetonCourant !=  null){
+                System.out.print("( )") ;  
+            }
+            else if ((Cellules[i][j].presenceDesintegrateur() == true) && Cellules[i][j].jetonCourant ==  null  ){
+                System.out.print("(D)") ;
+            }
+            else if((Cellules[i][j].presenceDesintegrateur() == true) && Cellules[i][j].jetonCourant !=  null  ){
+                if (Cellules[i][j].jetonCourant.Couleur == "rouge"){
+                    System.out.print("(R)");
+                }
+                if (Cellules[i][j].jetonCourant.Couleur== "jaune"){
+                    System.out.print("(J)");
+            }
             }
             else if (Cellules[i][j].jetonCourant == null ){
-                 System.out.print("N");
+                 System.out.print("( )");
             }
             else if (Cellules[i][j].jetonCourant !=  null ){
                 if (Cellules[i][j].jetonCourant.Couleur == "rouge"){
-                    System.out.print("R");
+                    System.out.print("(R)");
                 }
                 if (Cellules[i][j].jetonCourant.Couleur== "jaune"){
-                    System.out.print("J");
+                    System.out.print("(J)");
                 }
             }     
         }
