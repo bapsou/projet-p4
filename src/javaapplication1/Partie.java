@@ -68,7 +68,7 @@ public class Partie {
         ListeJoueurs[1]=J2;
         initialiserPartie() ;
         Scanner sc = new Scanner ( System.in) ;
-        while ( gdj.etreGagnantePourJoueur(ListeJoueurs[0]) != true || gdj.etreGagnantePourJoueur(ListeJoueurs[1])!= true|| gdj.etreRemplie() != true ) {
+        while ( gdj.etreGagnantePourJoueur(ListeJoueurs[0]) != true && gdj.etreGagnantePourJoueur(ListeJoueurs[1])!= true&& gdj.etreRemplie() != true ) {
         gdj.afficherGrilleSurConsole();
         System.out.println("Que Voulez vous faire ? \n1 : jouer un jeton \n2 : utiliser un désintegrateur\n3 : Recuperer un jeton  " );
             select = sc.nextInt() ;
@@ -127,7 +127,7 @@ public class Partie {
                 joueurCourant = ListeJoueurs[0] ;
                 }
             }
-        }    
-    }
-            
+        }
+        System.out.println("Bravo Au gagant ( le joueur qui vient de jouer !!!!");
+    }          
 }    
